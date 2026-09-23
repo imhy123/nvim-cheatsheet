@@ -16,7 +16,7 @@
     position:relative; width:3840px; height:2160px; flex:none;
     transform-origin:center center;
     display:flex; flex-direction:column;
-    padding:30px 46px 24px;
+    padding:30px 36px 24px;
     background:
       radial-gradient(1500px 700px at 8% -6%, rgba(24,180,190,.16), transparent 62%),
       radial-gradient(1700px 800px at 104% 4%, rgba(58,110,220,.14), transparent 60%),
@@ -59,12 +59,12 @@
 
   /* ---------- grid & panels ---------- */
   .grid { position:relative; flex:1; min-height:0; display:grid;
-          grid-template-columns:repeat(3,1fr); grid-template-rows:repeat(2,1fr);
-          gap:34px 30px; padding-top:18px; }
+          grid-template-columns:repeat(4,1fr); grid-template-rows:repeat(2,1fr);
+          gap:32px 24px; padding-top:16px; }
   .panel {
     --a:#6fc3ff;
     position:relative; min-height:0; border-radius:16px;
-    padding:38px 26px 18px;
+    padding:28px 16px 12px;
     background:linear-gradient(180deg, rgba(255,255,255,.028), rgba(255,255,255,0) 9%), rgba(10,17,29,.84);
     border:1px solid color-mix(in srgb, var(--a) 24%, rgba(255,255,255,.055));
     box-shadow:0 18px 44px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,255,255,.03);
@@ -74,33 +74,35 @@
     background:radial-gradient(430px 120px at 16% 0%, color-mix(in srgb, var(--a) 13%, transparent), transparent 70%);
   }
   .tab {
-    position:absolute; top:-26px; left:24px; z-index:2;
-    display:flex; align-items:baseline; gap:12px;
-    padding:10px 28px; border-radius:11px;
+    position:absolute; top:-23px; left:20px; z-index:2;
+    display:flex; align-items:baseline; gap:10px;
+    padding:8px 22px; border-radius:10px;
     background:linear-gradient(180deg,#101a2c,#0c1422);
     border:1px solid color-mix(in srgb, var(--a) 52%, transparent);
     box-shadow:0 8px 22px rgba(0,0,0,.5), 0 0 24px color-mix(in srgb, var(--a) 16%, transparent);
     white-space:nowrap;
   }
-  .tab .zh { font-size:29px; font-weight:700; color:var(--a); letter-spacing:2px; }
-  .tab .en { font-size:20px; color:color-mix(in srgb, var(--a) 62%, #8798ad); letter-spacing:3px; }
+  .tab .zh { font-size:23px; font-weight:700; color:var(--a); letter-spacing:2px; }
+  .tab .en { font-size:15px; color:color-mix(in srgb, var(--a) 62%, #8798ad); letter-spacing:3px; }
 
-  .rows { position:relative; display:flex; flex-direction:column; height:100%; padding-top:10px; }
+  .rows { position:relative; display:flex; flex-direction:column; height:100%; padding-top:6px; }
   .sh {
-    margin:10px 0 4px; padding-bottom:3px; font-size:20.5px; letter-spacing:2px;
+    margin:6px 0 2px; padding-bottom:2px; font-size:20px; letter-spacing:2px;
     color:color-mix(in srgb, var(--a) 52%, #7d8da3);
     border-bottom:1px dashed color-mix(in srgb, var(--a) 22%, rgba(255,255,255,.06));
   }
   .sh:first-child { margin-top:0; }
-  .row { display:flex; align-items:baseline; padding:var(--rp,3.8px) 0; }
+  .row { display:flex; align-items:baseline; padding:var(--rp,2.4px) 0; }
   .k {
-    width:var(--kw,248px); flex:none; padding-right:16px;
+    width:var(--kw,248px); flex:none; padding-right:10px;
     font-size:24px; font-weight:600; color:var(--a); letter-spacing:.2px;
     white-space:nowrap;
   }
-  .k.sm { font-size:21.5px; }
-  .d { flex:1; min-width:0; font-size:23.5px; color:#c6d2e2; line-height:1.32; }
+  .k.sm { font-size:18px; }
+  .d { flex:1; min-width:0; font-size:22px; color:#c6d2e2; line-height:1.32; }
   .d .m { color:#7d8ea5; }
+  .col.compact .k.sm { font-size:15px; }
+  .col.compact .d { font-size:18px; }
 
   /* ---------- footer ---------- */
   footer {
@@ -156,7 +158,7 @@ map(<span class="ts">"&lt;Leader&gt;lf"</span>, <span class="tv">vim.lsp.buf.for
   <div class="grid">
 
     <!-- ============ 1. FOLDING ============ -->
-    <section class="panel" style="--a:#f2c26b;--kw:352px">
+    <section class="panel" style="--a:#f2c26b;--kw:350px;--rp:2.0px">
       <div class="tab"><span class="zh">折叠</span><span class="en">FOLDING</span></div>
       <div class="rows">
         <div class="sh">创建 / 开关</div>
@@ -176,41 +178,55 @@ map(<span class="ts">"&lt;Leader&gt;lf"</span>, <span class="tv">vim.lsp.buf.for
         <div class="row"><span class="k">zM</span><span class="d">关闭全部折叠（所有层级）</span></div>
         <div class="row"><span class="k">zj / zk</span><span class="d">移到下 / 上一个折叠处</span></div>
         <div class="sh">提示</div>
-        <div class="row"><span class="k sm">foldcolumn</span><span class="d">折叠列可点击 / 回车，;u&gt; 开关</span></div>
-        <div class="row"><span class="k sm">:set foldmethod=indent</span><span class="d">manual / indent / expr / marker</span></div>
-        <div class="row"><span class="k sm">:set foldlevel=99</span><span class="d">启动时展开到第几层</span></div>
+        <div class="row"><span class="k">foldcolumn</span><span class="d">折叠列可点击 / 回车，;u&gt; 开关</span></div>
+        <div class="row"><span class="k">:set foldmethod=indent</span><span class="d">manual / indent / expr / marker</span></div>
+        <div class="row"><span class="k">:set foldlevel=99</span><span class="d">启动时展开到第几层</span></div>
       </div>
     </section>
 
-    <!-- ============ 2. PICKER ============ -->
-    <section class="panel" style="--a:#5fe0c0;--kw:282px">
-      <div class="tab"><span class="zh">搜索</span><span class="en">PICKER · GIT</span></div>
+    <!-- ============ 2. SEARCH / PICKER ============ -->
+    <section class="panel" style="--a:#5fe0c0;--kw:270px;--rp:2.0px">
+      <div class="tab"><span class="zh">搜索</span><span class="en">PICKER · GIT · SYMBOLS</span></div>
       <div class="rows">
         <div class="row"><span class="k">;ff</span><span class="d">查找文件</span></div>
-        <div class="row"><span class="k">;fF</span><span class="d">所有文件（含 hidden / ignored）</span></div>
+        <div class="row"><span class="k">;fF</span><span class="d">所有文件（含隐藏/忽略）</span></div>
         <div class="row"><span class="k">;fg</span><span class="d">Git 文件</span></div>
         <div class="row"><span class="k">;fw</span><span class="d">全项目搜索（ripgrep）</span></div>
-        <div class="row"><span class="k">;fW</span><span class="d">搜索所有文件（含 ignored）</span></div>
+        <div class="row"><span class="k">;fW</span><span class="d">所有文件（含忽略）</span></div>
         <div class="row"><span class="k">;fc</span><span class="d">搜索光标下单词</span></div>
         <div class="row"><span class="k">;fb</span><span class="d">buffer 列表</span></div>
         <div class="row"><span class="k">;fo / ;fO</span><span class="d">最近文件 / 仅当前目录</span></div>
         <div class="row"><span class="k">;fp</span><span class="d">项目列表</span></div>
         <div class="row"><span class="k">;fr</span><span class="d">寄存器</span></div>
-        <div class="row"><span class="k">;fh / ;fk / ;fC</span><span class="d">帮助 / 快捷键 / 命令</span></div>
-        <div class="row"><span class="k">;fm / ;ft / ;fl</span><span class="d">man / 主题 / 行搜索</span></div>
+        <div class="row"><span class="k">;fh / ;fk / ;fC</span><span class="d">帮助 / 键位 / 命令</span></div>
+        <div class="row"><span class="k">;fm / ;ft / ;fl</span><span class="d">man / 主题 / 行</span></div>
         <div class="row"><span class="k">;fu / ;f'</span><span class="d">undo 历史 / 标记 marks</span></div>
-        <div class="row"><span class="k">;fs / ;fa</span><span class="d">智能查找 / AstroNvim 配置</span></div>
+        <div class="row"><span class="k">;fs / ;fa</span><span class="d">智能查找 / AstroNvim</span></div>
         <div class="row"><span class="k">;f&lt;CR&gt;</span><span class="d">恢复上次搜索</span></div>
-        <div class="row"><span class="k">;gb / ;gc / ;gC</span><span class="d">分支 / 提交（全库）/（本文件）</span></div>
+        <div class="sh">Git</div>
+        <div class="row"><span class="k">;gb / ;gc / ;gC</span><span class="d">分支 / 提交 全库 / 当前文件</span></div>
         <div class="row"><span class="k">;gt / ;gT / ;go</span><span class="d">状态 / stash / 浏览器打开</span></div>
+        <div class="sh">符号 / 引用</div>
         <div class="row"><span class="k">;ls / ;lS</span><span class="d">符号搜索 / 符号大纲</span></div>
         <div class="row"><span class="k">]y / [y</span><span class="d">下 / 上一个符号（aerial）</span></div>
         <div class="row"><span class="k">;ur + ]r / [r</span><span class="d">引用高亮 / 上下引用跳转</span></div>
       </div>
     </section>
 
-    <!-- ============ 3. LSP ============ -->
-    <section class="panel" style="--a:#b99cff;--kw:290px">
+    <!-- ============ 3. REPLACE ============ -->
+    <section class="panel" style="--a:#5fe0c0;--kw:450px;--rp:2.4px">
+      <div class="tab"><span class="zh">替换</span><span class="en">REPLACE</span></div>
+      <div class="rows">
+        <div class="row"><span class="k">:%s/\t/&nbsp;&nbsp;&nbsp;&nbsp;/g</span><span class="d">tab 转 4 空格 <span class="m">（c 确认）</span></span></div>
+        <div class="row"><span class="k">:vimgrep /oldName/g **/*.java</span><span class="d">项目内搜索写入 qf</span></div>
+        <div class="row"><span class="k">;fw → &lt;C-q&gt;</span><span class="d">picker 结果发 qf <span class="m">（-g 可限类型）</span></span></div>
+        <div class="row"><span class="k">:copen / :lopen</span><span class="d">打开 qf / location list</span></div>
+        <div class="row"><span class="k">:cfdo %s/old/new/ge | update</span><span class="d">不加|update则需要wqa保存所有文件 </span></div>
+      </div>
+    </section>
+
+    <!-- ============ 4. LSP ============ -->
+    <section class="panel" style="--a:#b99cff;--kw:300px;--rp:2.4px">
       <div class="tab"><span class="zh">语言服务</span><span class="en">LSP</span></div>
       <div class="rows">
         <div class="sh">跳转</div>
@@ -225,6 +241,8 @@ map(<span class="ts">"&lt;Leader&gt;lf"</span>, <span class="tv">vim.lsp.buf.for
         <div class="row"><span class="k">gra / ;la</span><span class="d">code action（n / x 模式）</span></div>
         <div class="row"><span class="k">;lA</span><span class="d">source action（整理 import 等）</span></div>
         <div class="row"><span class="k">;lf</span><span class="d">格式化（n / v 选区）</span></div>
+        <div class="row"><span class="k">K</span><span class="d">悬停文档（hover）</span></div>
+        <div class="row"><span class="k">== · gg=G · =i{</span><span class="d">= 操作符：行 / 全文件 / 块，v= 选区</span></div>
         <div class="row"><span class="k">grx / ;lL</span><span class="d">运行 codelens</span></div>
         <div class="sh">诊断 &amp; 开关</div>
         <div class="row"><span class="k">]e [e / ]w [w</span><span class="d">下 / 上 错误、警告</span></div>
@@ -239,7 +257,7 @@ map(<span class="ts">"&lt;Leader&gt;lf"</span>, <span class="tv">vim.lsp.buf.for
     </section>
 
     <!-- ============ 4. BUFFERS ============ -->
-    <section class="panel" style="--a:#6fc3ff;--kw:268px">
+    <section class="panel" style="--a:#6fc3ff;--kw:300px;--rp:2.6px">
       <div class="tab"><span class="zh">缓冲区</span><span class="en">BUFFERS</span></div>
       <div class="rows">
         <div class="sh">打开 / 关闭</div>
@@ -263,7 +281,7 @@ map(<span class="ts">"&lt;Leader&gt;lf"</span>, <span class="tv">vim.lsp.buf.for
     </section>
 
     <!-- ============ 5. REGISTERS / MARKS / JUMPS ============ -->
-    <section class="panel" style="--a:#8ee06a;--kw:268px">
+    <section class="panel" style="--a:#8ee06a;--kw:300px;--rp:3.0px">
       <div class="tab"><span class="zh">寄存器 · 标记 · 跳转</span><span class="en">REGISTERS · MARKS · JUMPS</span></div>
       <div class="rows">
         <div class="sh">寄存器</div>
@@ -292,7 +310,7 @@ map(<span class="ts">"&lt;Leader&gt;lf"</span>, <span class="tv">vim.lsp.buf.for
     </section>
 
     <!-- ============ 6. DAP ============ -->
-    <section class="panel" style="--a:#ff9d5c;--kw:246px">
+    <section class="panel" style="--a:#ff9d5c;--kw:300px;--rp:2.6px">
       <div class="tab"><span class="zh">调试</span><span class="en">DAP</span></div>
       <div class="rows">
         <div class="sh">功能键</div>
@@ -327,7 +345,7 @@ map(<span class="ts">"&lt;Leader&gt;lf"</span>, <span class="tv">vim.lsp.buf.for
       <b>]t / [t</b> 标签页 ·&nbsp; <b>;Ss</b> 存会话 <b>;Sl</b> 恢复 ·&nbsp; <b>;p</b> 插件管理 ·&nbsp;
       <b>;h</b> 首页 ·&nbsp; <b>;q</b> 关窗 <b>;Q</b> 退出 ·&nbsp; 忘了按键？按 <b>;</b> 停一下看 which-key
     </div>
-    <div>AstroNvim v6 · 2026-09-20</div>
+    <div>AstroNvim v6 · 2026-09-22</div>
   </footer>
 
   <div class="vig"></div>
